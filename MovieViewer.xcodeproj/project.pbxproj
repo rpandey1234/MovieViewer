@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		B71071121DACA5C200D43B25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71071111DACA5C200D43B25 /* AppDelegate.swift */; };
-		B71071141DACA5C200D43B25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71071131DACA5C200D43B25 /* ViewController.swift */; };
 		B71071171DACA5C200D43B25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B71071151DACA5C200D43B25 /* Main.storyboard */; };
 		B71071191DACA5C200D43B25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B71071181DACA5C200D43B25 /* Assets.xcassets */; };
 		B710711C1DACA5C200D43B25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B710711A1DACA5C200D43B25 /* LaunchScreen.storyboard */; };
+		B71071241DACA63B00D43B25 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71071231DACA63B00D43B25 /* MoviesViewController.swift */; };
+		B71071271DACAE9500D43B25 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71071261DACAE9500D43B25 /* MovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B710710E1DACA5C200D43B25 /* MovieViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B71071111DACA5C200D43B25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B71071131DACA5C200D43B25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B71071161DACA5C200D43B25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B71071181DACA5C200D43B25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B710711B1DACA5C200D43B25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B710711D1DACA5C200D43B25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B71071231DACA63B00D43B25 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		B71071261DACAE9500D43B25 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,31 @@
 		B71071101DACA5C200D43B25 /* MovieViewer */ = {
 			isa = PBXGroup;
 			children = (
+				B71071281DACAE9D00D43B25 /* View controllers */,
+				B71071251DACAE7400D43B25 /* Views */,
 				B71071111DACA5C200D43B25 /* AppDelegate.swift */,
-				B71071131DACA5C200D43B25 /* ViewController.swift */,
 				B71071151DACA5C200D43B25 /* Main.storyboard */,
 				B71071181DACA5C200D43B25 /* Assets.xcassets */,
 				B710711A1DACA5C200D43B25 /* LaunchScreen.storyboard */,
 				B710711D1DACA5C200D43B25 /* Info.plist */,
 			);
 			path = MovieViewer;
+			sourceTree = "<group>";
+		};
+		B71071251DACAE7400D43B25 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B71071261DACAE9500D43B25 /* MovieCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B71071281DACAE9D00D43B25 /* View controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B71071231DACA63B00D43B25 /* MoviesViewController.swift */,
+			);
+			name = "View controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +155,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B71071141DACA5C200D43B25 /* ViewController.swift in Sources */,
 				B71071121DACA5C200D43B25 /* AppDelegate.swift in Sources */,
+				B71071241DACA63B00D43B25 /* MoviesViewController.swift in Sources */,
+				B71071271DACAE9500D43B25 /* MovieCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
