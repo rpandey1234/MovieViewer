@@ -22,26 +22,31 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kmz-7W-juy" id="eFe-Z2-nGO">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="143"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EoD-Rz-fEu">
-                                                    <rect key="frame" x="8" y="-6" width="304" height="45"/>
+                                                    <rect key="frame" x="99" y="-6" width="213" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tXX-g1-cvp">
-                                                    <rect key="frame" x="9" y="48" width="304" height="86"/>
+                                                    <rect key="frame" x="99" y="48" width="214" height="86"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="UEj-0c-3vN">
+                                                    <rect key="frame" x="0.0" y="-6" width="91" height="149"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="overviewLabel" destination="tXX-g1-cvp" id="H6f-de-9UA"/>
+                                            <outlet property="posterView" destination="UEj-0c-3vN" id="Dkf-fw-ufQ"/>
                                             <outlet property="titleLabel" destination="EoD-Rz-fEu" id="uF3-nz-0ky"/>
                                         </connections>
                                     </tableViewCell>
