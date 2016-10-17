@@ -8,9 +8,11 @@
 
 import UIKit
 import AFNetworking
+import MBProgressHUD
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var networkErrorLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var movies: [NSDictionary]?
     var endpoint: String!
@@ -33,24 +35,32 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func loadData(refreshControl: UIRefreshControl?) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = URL(string: "https://api.themoviedb.org/3/movie/\(endpoint!)?api_key=\(apiKey)")
         
+        print(self.view)
         print(url)
         let request = URLRequest(url: url!)
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: OperationQueue.main)
         let task : URLSessionDataTask = session.dataTask(with: request,
-                                                         completionHandler: {(dataOrNil, response, error) in
-                                                            if let data = dataOrNil {
-                                                                if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
-                                                                    NSLog("response: \(responseDictionary)")
-                                                                    self.movies = responseDictionary["results"] as? [NSDictionary]
-                                                                    self.tableView.reloadData()
-                                                                    if let refreshControl = refreshControl {
-                                                                        refreshControl.endRefreshing()
-                                                                    }
-                                                                }
-                                                            }
+             completionHandler: {(dataOrNil, response, error) in
+                MBProgressHUD.hide(for: self.view, animated: true)
+                if error != nil {
+                    self.networkErrorLabel.isHidden = false
+                    return
+                }
+                self.networkErrorLabel.isHidden = true
+                if let data = dataOrNil {
+                    if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
+    //                  NSLog("response: \(responseDictionary)")
+                        self.movies = responseDictionary["results"] as? [NSDictionary]
+                        self.tableView.reloadData()
+                        if let refreshControl = refreshControl {
+                            refreshControl.endRefreshing()
+                        }
+                    }
+                }
         })
         task.resume()
 
