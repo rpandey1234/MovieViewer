@@ -20,6 +20,20 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Movies"
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.backgroundColor = UIColor(hue: 0.9, saturation: 0.2, brightness: 0.9, alpha: 0.6)
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor.gray.withAlphaComponent(0.3)
+            shadow.shadowOffset = CGSize(width: 1, height: 1)
+            shadow.shadowBlurRadius = 2
+            navigationBar.titleTextAttributes = [
+                NSFontAttributeName : UIFont.boldSystemFont(ofSize: 22),
+                NSForegroundColorAttributeName : UIColor(hue: 0.9, saturation: 0.9, brightness: 0.9, alpha: 0.6),
+                NSShadowAttributeName : shadow
+            ]
+        }
+        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
         
@@ -82,14 +96,37 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
-        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor(hue: 0.9, saturation: 0.2, brightness: 0.9, alpha: 0.2)
+        cell.selectedBackgroundView = backgroundView
         let movie = movies![(indexPath as NSIndexPath).row]
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
         let baseUrl = "http://image.tmdb.org/t/p/w500"
         if let posterPath = movie["poster_path"] as? String {
             let imageUrl = URL(string: baseUrl + posterPath)
-            cell.posterView.setImageWith(imageUrl!)
+            let imageRequest = URLRequest(url: imageUrl!)
+            cell.posterView.setImageWith(imageRequest,
+                placeholderImage: UIImage(named: "placeholder"),
+                success: { (imageRequest, imageResponse, image) in
+                    print("success network request")
+                    if imageResponse != nil {
+                        print("image was NOT cached, fade in image")
+                        cell.posterView.alpha = 0.0
+                        cell.posterView.image = image
+                        UIView.animate(withDuration: 0.3, animations: {
+                            cell.posterView.alpha = 1.0
+                        })
+                    } else {
+                        print("image was cached, so just update the image")
+                        cell.posterView.image = image
+                    }
+                },
+                failure: { (imageResquest, imageResponse, error) in
+                    // do something for failure condition
+                    print("failed network request")
+                    cell.posterView.image = UIImage(named: "placeholder")
+            })
         }
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
